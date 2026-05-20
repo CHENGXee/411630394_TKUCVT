@@ -98,12 +98,6 @@ PID   USER     TIME  COMMAND
 "sha256:a0636672c7fc32af4d1022152a8e32256abd648fb01f48f33023839e65c6d1cb" -> 不相同
 ```
 
-|符號|意義|說明|
-|---|---|---|
-|A|Added（新增）|這個路徑在唯讀層裡不存在，是這個容器的可寫層新建的|
-|C|Changed（變更）|目錄本身被改過——通常是因為目錄內有檔案被新增、修改或刪除|
-|D|Deleted（刪除）|原本在唯讀層裡存在的檔案，被這個容器刪掉了|
-
 ### `docker diff` 輸出範例與解讀
 ```bash
 C /etc
@@ -124,6 +118,12 @@ A /var/cache/nginx/proxy_temp
 C /tmp
 A /tmp/hello.txt
 ```
+
+|符號|意義|說明|
+|---|---|---|
+|A|Added（新增）|這個路徑在唯讀層裡不存在，是這個容器的可寫層新建的|
+|C|Changed（變更）|目錄本身被改過——通常是因為目錄內有檔案被新增、修改或刪除|
+|D|Deleted（刪除）|原本在唯讀層裡存在的檔案，被這個容器刪掉了|
 
 ## OCI 呼叫鏈
 - **dockerd → containerd → containerd-shim → runc 各自負責什麼**
